@@ -2,9 +2,11 @@
   "name": "minimalmaximal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node ./src/server.ts"
+    "dev": "ts-node ./src/server.ts",
+    "build": "rm -rf ./dist/ && tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

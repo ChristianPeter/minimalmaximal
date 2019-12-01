@@ -5,7 +5,7 @@ class App {
   public app: express.Application;
   public port: number;
  
-  constructor(controllers, port) {
+  constructor(controllers: any[], port: number) {
     this.app = express();
     this.port = port;
  
@@ -17,7 +17,7 @@ class App {
     this.app.use(bodyParser.json());
   }
  
-  private initializeControllers(controllers) {
+  private initializeControllers(controllers: any[]) {
     controllers.forEach((controller) => {
       this.app.use('/api/', controller.router);
     });
