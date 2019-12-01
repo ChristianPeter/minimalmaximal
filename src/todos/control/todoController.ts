@@ -17,6 +17,8 @@ class TodoController {
 
     this.router.post(this.path, this.createATodo);
     this.router.put(`${this.path}/:id`, this.updateATodo);
+    this.router.delete(`${this.path}/:id`, this.deleteATodo);
+
   }
  
   getAllTodos = (request: express.Request, response: express.Response) => {
@@ -38,6 +40,11 @@ class TodoController {
     const id = request.params.id;
     const todo: Todo = request.body;
 
+  }
+
+  deleteATodo = (request: express.Request, response: express.Response) => {
+    const id = request.params.id;
+    this.todoRepository.deleteTodo(id);
   }
 }
  

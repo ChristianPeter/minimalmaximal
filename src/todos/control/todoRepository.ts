@@ -30,5 +30,13 @@ class TodoRepository {
         this.todos.push(todo);
         return todo;
     }
+
+    public deleteTodo(id: string) {
+        const index = this.todos.findIndex((todo) => todo.id === Number(id));
+        if (index > -1) {
+            console.log('deleting', index);
+            this.todos.splice(index, 1);
+        }
+    }
 }
 export default TodoRepository;
