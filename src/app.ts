@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
- 
+import * as path from "path";
+
 class App {
   public app: express.Application;
   public port: number;
@@ -9,13 +10,18 @@ class App {
     this.app = express();
     this.port = port;
  
-    this.initializeMiddlewares();
+    // Template configuration
+    this.app.set("view engine", "ejs");
+    this.app.set("views", "public");
+    // Static files configuration
+    this.app.use("/assets", express.static(path.join(__dirname, "frontend")));
+    this.app.get('/',  (req, res) => {
+        res.render("index");
+    });
+    this.app.use(bodyParser.json());
     this.initializeControllers(controllers);
   }
  
-  private initializeMiddlewares() {
-    this.app.use(bodyParser.json());
-  }
  
   private initializeControllers(controllers: any[]) {
     controllers.forEach((controller) => {
