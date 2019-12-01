@@ -17,6 +17,13 @@ npm run start (will build)
 npm run build (build only)
 
 
+testing:
+npm install -D jest ts-jest @types/jest
+nano package.json
+
+npx ts-jest config:init
+
+
 
 https://github.com/atomAltera/my-fullstack-typescript-app-scaffold
 https://dev.to/nuclight/setting-up-fullstack-typescript-app-1bbe
